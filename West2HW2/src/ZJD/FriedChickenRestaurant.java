@@ -3,5 +3,5 @@ package ZJD;
 interface FriedChickenRestaurant {
 
  void sellMeal(String mealname);
- void bulkPurchase();
+ void bulkPurchase(int n,int m);
 }

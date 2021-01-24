@@ -3,6 +3,7 @@ package ZJD;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class West2FriedChickenRestauran implements FriedChickenRestaurant {
 	double balance = 50;
@@ -46,14 +47,24 @@ public void tostring() {
 
 	//進貨方法
 	@Override
-	public void bulkPurchase() {
-		beer.add(雪花);
-		beer.add(雪花);
-		beer.add(雪花);
-		juice.add(橙汁);
-		juice.add(橙汁);
-		juice.add(橙汁);
-		double percost = 雪花.getCost() * 3 + 橙汁.getCost() * 3;
+	public void bulkPurchase(int beernum,int juicenum) {
+		System.out.println("你想进__啤酒?");
+		Scanner n1=new Scanner(System.in);
+		int sr=n1.nextInt();
+		beernum=sr;
+		for(int i=0;i<beernum;i++) {
+			beer.add(雪花);
+		}
+		System.out.println("你想进__果汁");
+		Scanner n2=new Scanner(System.in);
+		int src=n2.nextInt();
+		juicenum=src; 
+		for(int i=0;i<juicenum;i++) {
+			this.juice.add(橙汁);
+		}
+		
+		
+		double percost = 雪花.getCost() * beernum + 橙汁.getCost() * juicenum;
 		double own = percost - balance;
 		if (balance < percost) {
 			throw new OverdraftBalanceException("没钱辣，进不了货,还差" + own + "元");
